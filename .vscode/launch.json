@@ -4,7 +4,7 @@
       "name": "Python: Remote Attach",
       "type": "python",
       "request": "attach",
-      "connect": { "host": "localhost", "port": 10000 },
+      "connect": { "host": "localhost", "port": 10020 },
       "pathMappings": [
         { "localRoot": "${workspaceFolder}", "remoteRoot": "/app/usr/src" }
       ]
