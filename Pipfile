@@ -10,6 +10,7 @@ pydantic = "*"
 uvicorn = "*"
 
 [dev-packages]
+debugpy = "*"
 
 [requires]
 python_version = "3.9"

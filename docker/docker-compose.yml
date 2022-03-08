@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.7"
 
 services:
   exchange-rate-api:
@@ -9,12 +9,11 @@ services:
     command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 80
     volumes:
       - ../:/usr/src/app/
-      - ../key/:/key
     ports:
-      - 8009:80
-      - 10019:10000
+      - 4000:80
+      - 10020:10000
     environment:
-      - DEBUGGER=True
+      - DEBUGGER=False
       - ENVIRONMENT=dev
       - APP_VERSION=0.1.0
       - APP_TITLE=Exchange Rate API
