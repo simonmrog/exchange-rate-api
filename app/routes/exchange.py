@@ -1,3 +1,4 @@
+from asyncio import gather
 from fastapi import APIRouter, status
 
 from app.logger import get_logger
@@ -17,15 +18,17 @@ router = APIRouter()
 )
 async def get_exchange():
     try:
-        official_result = await exchange_service.get_official_data()
-        fixer_result = await exchange_service.get_data_from_fixer()
-        banxico_result = await exchange_service.get_data_from_banxico()
+        official_result = exchange_service.get_official_data()
+        fixer_result = exchange_service.get_data_from_fixer()
+        banxico_result = exchange_service.get_data_from_banxico()
+
+        rate_results = await gather(official_result, fixer_result, banxico_result)
 
         return ExchangeOutput(
             rates={
-                "official": official_result,
-                "fixer": fixer_result,
-                "banxico": banxico_result,
+                "official": rate_results[0],
+                "fixer": rate_results[1],
+                "banxico": rate_results[2],
             }
         )
     except Exception as e:
