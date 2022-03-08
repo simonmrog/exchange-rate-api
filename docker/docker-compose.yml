@@ -23,3 +23,29 @@ services:
       - FIXER_API_KEY=f9aff0ccbc4b5bc563017d44b88928d1
       - BANXICO_API=https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos
       - BANXICO_TOKEN=700bd6f4d875c0f527001edb1737db29caff831b0b8e25b3e5baa77f83f19e1c
+    networks:
+     - exchange
+
+  exchange-db:
+    image: exchange-db
+    build:
+      context: ../db
+      dockerfile: Dockerfile
+    ports:
+      - 5436:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - exchange_data:/var/lib/postgresql/data
+    networks:
+      - exchange
+
+
+networks:
+  exchange:
+   external: true
+
+volumes:
+  exchange_data:
+   external: true
