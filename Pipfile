@@ -8,6 +8,7 @@ fastapi = "*"
 httpx = "*"
 pydantic = "*"
 uvicorn = "*"
+bs4 = "*"
 
 [dev-packages]
 debugpy = "*"

@@ -18,6 +18,7 @@ services:
       - APP_VERSION=0.1.0
       - APP_TITLE=Exchange Rate API
       - APP_DESCRIPTION=Exchange rate API
+      - OFFICIAL_RATE_SITE=https://www.banxico.org.mx/tipcamb/tipCamMIAction.do
       - FIXER_API=http://data.fixer.io/api/latest
       - FIXER_API_KEY=f9aff0ccbc4b5bc563017d44b88928d1
       - BANXICO_API=https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos

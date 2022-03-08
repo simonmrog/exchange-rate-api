@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     APP_TITLE: str
     APP_DESCRIPTION: str
     APP_VERSION: str
+    OFFICIAL_RATE_SITE: str
     FIXER_API: str
     FIXER_API_KEY: str
     BANXICO_API: str

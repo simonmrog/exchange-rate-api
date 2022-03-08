@@ -20,7 +20,7 @@ class HTTPClient:
                 response = await client.get(url, params=params, headers=headers)
                 if response is None:
                     raise Exception(f"Could not get response from {url}")
-                return response.json()
+                return response
         except Exception as e:
             log.error(e)
             return None
