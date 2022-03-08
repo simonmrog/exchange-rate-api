@@ -18,3 +18,4 @@ services:
       - APP_VERSION=0.1.0
       - APP_TITLE=Exchange Rate API
       - APP_DESCRIPTION=Exchange rate API
+      - FIXER_API_KEY=f9aff0ccbc4b5bc563017d44b88928d1
