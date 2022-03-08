@@ -20,6 +20,7 @@ async def get_exchange():
         official_result = await exchange_service.get_official_data()
         fixer_result = await exchange_service.get_data_from_fixer()
         banxico_result = await exchange_service.get_data_from_banxico()
+
         return ExchangeOutput(
             rates={
                 "official": official_result,
