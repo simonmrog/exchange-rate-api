@@ -11,6 +11,9 @@ uvicorn = "*"
 bs4 = "*"
 tortoise-orm = "*"
 asyncpg = "*"
+pytest = "*"
+requests = "*"
+pytest-cov = "*"
 
 [dev-packages]
 debugpy = "*"

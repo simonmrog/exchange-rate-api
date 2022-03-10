@@ -15,4 +15,4 @@ async def create_default_user() -> None:
         created_user = await user_service.create(payload=user)
         log.info("Default user created successfully with ID=", created_user.id)
     except Exception as e:
-        log.error(f"{e}: Could not create default user into DB. Please do it manually")
+        log.error(f"{e}")
