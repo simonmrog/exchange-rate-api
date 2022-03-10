@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.logger import get_logger
 from app.config import settings
+from app.db.config import init_tortoise, connect_to_database
+from app.db.defaults import create_default_user
 from app.routes.api import router
 from app.debugger import init_debugger
 
@@ -38,6 +40,9 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     log.info("Starting up...")
+    init_tortoise(app)
+    await connect_to_database()
+    await create_default_user()
 
 
 @app.on_event("shutdown")

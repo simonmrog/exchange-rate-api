@@ -9,6 +9,8 @@ httpx = "*"
 pydantic = "*"
 uvicorn = "*"
 bs4 = "*"
+tortoise-orm = "*"
+asyncpg = "*"
 
 [dev-packages]
 debugpy = "*"

@@ -18,11 +18,16 @@ services:
       - APP_VERSION=0.1.0
       - APP_TITLE=Exchange Rate API
       - APP_DESCRIPTION=Exchange rate API
+      - DATABASE_HOST=exchange-db
+      - DATABASE_NAME=exchange_db_dev
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
       - OFFICIAL_RATE_SITE=https://www.banxico.org.mx/tipcamb/tipCamMIAction.do
       - FIXER_API=http://data.fixer.io/api/latest
       - FIXER_API_KEY=f9aff0ccbc4b5bc563017d44b88928d1
       - BANXICO_API=https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos
       - BANXICO_TOKEN=700bd6f4d875c0f527001edb1737db29caff831b0b8e25b3e5baa77f83f19e1c
+      - RATE_LIMIT_PER_USER=10
     networks:
      - exchange
 
