@@ -5,6 +5,7 @@ from app.schemas.exchange import ExchangeResult, ExchangeOutput
 from app.services.exchange import exchange_service
 
 
+# SERVICE TEST
 def test_exchange_rates(event_loop: asyncio.AbstractEventLoop):
     # Getting results from resources
     official_results = event_loop.run_until_complete(
@@ -27,6 +28,7 @@ def test_exchange_rates(event_loop: asyncio.AbstractEventLoop):
         assert False
 
 
+# ENDPOINT TEST
 def test_exchange_endpoint(test_app: FastAPI):
     response = test_app.get("/api/exchange")
     assert response.status_code == 200
