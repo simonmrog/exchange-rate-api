@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     APP_VERSION: str
     DATABASE_HOST: str
     DATABASE_NAME: str
+    DATABASE_TEST_NAME: str
     DATABASE_USER: str
     DATABASE_PASSWORD: str
     OFFICIAL_RATE_SITE: str
@@ -25,6 +26,4 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_USER: int
 
 
-def get_settings() -> BaseSettings:
-    log.info("Loading config variables from the environment...")
-    return Settings()
+settings = Settings()

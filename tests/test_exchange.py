@@ -1,5 +1,7 @@
 import asyncio
-from app.schemas.exchange import ExchangeResult
+from fastapi import FastAPI
+
+from app.schemas.exchange import ExchangeResult, ExchangeOutput
 from app.services.exchange import exchange_service
 
 
@@ -20,11 +22,16 @@ def test_exchange_rates(event_loop: asyncio.AbstractEventLoop):
     try:
         # Make use of pydantic model validations for results
         for rate in rate_results:
-            ExchangeResult(**rate.dict())
-        assert True
+            assert ExchangeResult(**rate.dict())
     except Exception:
         assert False
 
 
-# def test_exchange_endpoint(test_app):
-#     assert True
+def test_exchange_endpoint(test_app: FastAPI):
+    response = test_app.get("/api/exchange")
+    assert response.status_code == 200
+    rates = response.json()
+    print(rates)
+    assert ExchangeOutput(**rates)
+    for rate in rates["rates"].values():
+        assert ExchangeResult(**rate)
