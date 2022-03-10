@@ -1,6 +1,12 @@
 from pydantic import BaseSettings
 
 
+from app.logger import get_logger
+
+
+log = get_logger(__name__)
+
+
 class Settings(BaseSettings):
     DEBUGGER: bool
     ENVIRONMENT: str
@@ -19,4 +25,6 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_USER: int
 
 
-settings = Settings()
+def get_settings() -> BaseSettings:
+    log.info("Loading config variables from the environment...")
+    return Settings()

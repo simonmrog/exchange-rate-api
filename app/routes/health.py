@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 
-from app.config import settings
+from app.config import get_settings
 from app.schemas.health import HealthCheck
 
+settings = get_settings()
 router = APIRouter()
 
 

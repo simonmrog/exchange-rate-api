@@ -2,8 +2,11 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 from app.schemas.exchange import ExchangeResult
-from app.config import settings
+from app.config import get_settings
 from app.core.httpx import HTTPClient
+
+
+settings = get_settings()
 
 
 class ExchangeService:

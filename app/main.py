@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 from app.logger import get_logger
-from app.config import settings
+from app.config import get_settings
 from app.db.config import init_tortoise, connect_to_database
 from app.db.defaults import create_default_user
 from app.routes.api import router
@@ -11,6 +11,7 @@ from app.debugger import init_debugger
 
 
 log = get_logger(__name__)
+settings = get_settings()
 
 
 def init_application() -> FastAPI:

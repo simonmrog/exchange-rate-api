@@ -4,10 +4,11 @@ from tortoise.contrib.fastapi import register_tortoise
 
 
 from app.logger import get_logger
-from app.config import settings
+from app.config import get_settings
 
 
 log = get_logger(__name__)
+settings = get_settings()
 database_auth = f"{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}"
 database_url = (
     f"postgres://{database_auth}@{settings.DATABASE_HOST}/{settings.DATABASE_NAME}"
