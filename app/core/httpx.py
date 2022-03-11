@@ -24,3 +24,22 @@ class HTTPClient:
         except Exception as e:
             log.error(e)
             return None
+
+    async def post(
+        self,
+        *,
+        url_service: str,
+        data: Optional[Dict[str, Any]] = None,
+        headers: Optional[Dict[str, Any]] = None,
+    ) -> Optional[Dict[str, Any]]:
+        try:
+            async with AsyncClient() as client:
+                response = await client.post(
+                    url_service,
+                    data=data,
+                    headers=headers,
+                )
+                return response
+        except Exception as e:
+            log.error(e)
+            return None

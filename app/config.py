@@ -24,6 +24,8 @@ class Settings(BaseSettings):
     BANXICO_API: str
     BANXICO_TOKEN: str
     RATE_LIMIT_PER_USER: int
+    SECRET_KEY: str
+    ALGORITHM: str
 
 
 settings = Settings()

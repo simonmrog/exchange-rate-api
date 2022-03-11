@@ -1,9 +1,10 @@
 from asyncio import gather
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, Security
 
 from app.logger import get_logger
 from app.schemas.exchange import ExchangeOutput
 from app.services.exchange import exchange_service
+from app.services.auth import auth_service
 from app.services.error import error_handler
 
 
@@ -15,6 +16,7 @@ router = APIRouter()
     "",
     status_code=status.HTTP_200_OK,
     response_model=ExchangeOutput,
+    dependencies=[Security(auth_service.get_current_user)],
 )
 async def get_exchange():
     try:
