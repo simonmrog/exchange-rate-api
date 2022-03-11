@@ -63,7 +63,9 @@ class AuthService:
                 raise credentials_exception
         except (JWTError, ValidationError):
             raise credentials_exception
-        return UserAuth(username=user["username"], rate_limit=user["rate_limit"])
+        return UserAuth(
+            id=user["id"], username=user["username"], rate_limit=user["rate_limit"]
+        )
 
 
 auth_service = AuthService()

@@ -9,5 +9,10 @@ class User(BaseModel):
 
 
 class UserAuth(BaseModel):
+    id: int
     username: str
+    rate_limit: int
+
+
+class UpdateUser(BaseModel):
     rate_limit: int
