@@ -13,7 +13,7 @@ services:
       - 4000:80
       - 10020:10000
     environment:
-      - DEBUGGER=True
+      - DEBUGGER=False
       - ENVIRONMENT=dev
       - APP_VERSION=0.1.0
       - APP_TITLE=Exchange Rate API
