@@ -37,11 +37,9 @@ async def get_exchange(
                 detail="Rate limit exceeded. Please upgrade your subscription",
             )
         official_result = exchange_service.get_official_data()
-        # fixer_result = exchange_service.get_data_from_fixer()
+        fixer_result = exchange_service.get_data_from_fixer()
         banxico_result = exchange_service.get_data_from_banxico()
-        rates = await gather(official_result, banxico_result)
-        rate_results = [rates[0], {"last_updated": "today", "value": 20}, rates[1]]
-        # rate_results = await gather(official_result, fixer_result, banxico_result)
+        rate_results = await gather(official_result, fixer_result, banxico_result)
 
         patch = UpdateUser(rate_limit=user_rate_limit + 1)
         await user_service.update(id=current_user.id, payload=patch)
