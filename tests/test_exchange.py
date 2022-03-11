@@ -30,7 +30,10 @@ def test_exchange_rates(event_loop: asyncio.AbstractEventLoop):
 
 # ENDPOINT TEST
 def test_exchange_endpoint(test_app: FastAPI):
-    response = test_app.get("/api/exchange")
+    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ7XCJpZFwiOiA0NCwgXCJ1c2VybmFtZVwiOiBcImd1ZXN0XCIsIFwicmF0ZV9saW1pdFwiOiAwfSJ9.0qKPAfgj0oK8Z-d_ezvJ2jbwUEdq4vn1BiTufbcX4_0"
+    response = test_app.get(
+        "/api/exchange", headers={"Authorization": f"Bearer {token}"}
+    )
     assert response.status_code == 200
     rates = response.json()
     print(rates)
