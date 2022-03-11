@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
@@ -32,6 +33,10 @@ class ExchangeService:
         url = f"{settings.FIXER_API}?access_key={settings.FIXER_API_KEY}"
         response = await self.__client.get(url=url)
         rates = response.json()
+        if "error" in rates:
+            raise HTTPException(
+                status_code=500, detail=f"Fixer error: {rates['error']['info']}"
+            )
         mxn_rate = rates["rates"]["MXN"]
         timestamp = rates["timestamp"]
         last_updated = datetime.utcfromtimestamp(timestamp).isoformat()
